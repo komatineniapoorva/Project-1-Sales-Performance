@@ -43,6 +43,25 @@ alter table [Online Retail sales] add Sales int
 Update [Online Retail sales] set UnitPrice=UnitPrice*100
 update [Online Retail sales] set Sales =UnitPrice*Quantity
 
+--Total Orders Per date
+select DATENAME(DD,InvoiceDate) as Days, COUNT(invoiceNO) as Total_Orders
+from [Online Retail sales]
+group by DATENAME(DD,InvoiceDate)
+
+--Total Order per day
+select DATENAME(DW,InvoiceDate) as Days, COUNT(invoiceNO) as Total_Orders
+from [Online Retail sales]
+group by DATENAME(DW,InvoiceDate)
+
+--Total Orders every month
+select DATENAME(MONTH,InvoiceDate) as Days, COUNT(invoiceNO) as Total_Orders
+from [Online Retail sales]
+group by DATENAME(MONTH,InvoiceDate)
+
+
+--Average sales 
+select avg(sales) as avgsales from [Online Retail sales] 
+
 
 
 
